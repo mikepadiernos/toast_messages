@@ -1,0 +1,4 @@
+toast_messages.settings:
+  title: 'Toast Messages settings'
+  route_name: toast_messages.settings
+  parent: 'system.admin_config_development'

@@ -1,0 +1,70 @@
+toast_messages.settings:
+  type: config_object
+  label: 'Toast messages settings'
+  mapping:
+    position:
+      type: string
+      label: 'Toast message position'
+    theme:
+      type: string
+      label: 'Toast message theme'
+    maxWidth:
+      type: integer
+      label: 'Toast message width'
+    timeout:
+      type: integer
+      label: 'Toast message timeout'
+    titleSize:
+      type: string
+      label: 'Title font size'
+    messageSize:
+      type: string
+      label: 'Message font size'
+    drag:
+      type: boolean
+      label: 'Drag feature'
+    close:
+      type: boolean
+      label: 'Close button'
+    closeOnEscape:
+      type: boolean
+      label: 'Close on escape'
+    closeOnClick:
+      type: boolean
+      label: 'Close on click'
+    rtl:
+      type: boolean
+      label: 'RTL option'
+    pauseOnHover:
+      type: boolean
+      label: 'Pause on hover'
+    resetOnHover:
+      type: boolean
+      label: 'Reset on hover'
+    progressBar:
+      type: boolean
+      label: 'Progress bar'
+    overlay:
+      type: boolean
+      label: 'Overlay'
+    overlayClose:
+      type: boolean
+      label: 'Overlay close'
+    animateInside:
+      type: boolean
+      label: 'Animate inside'
+    transitionIn:
+      type: string
+      label: 'Transition in'
+    transitionOut:
+      type: string
+      label: 'Transition out'
+    transitionInMobile:
+      type: string
+      label: 'Mobile transition in'
+    transitionOutMobile:
+      type: string
+      label: 'Mobile transition out'
+    displayMode:
+      type: boolean
+      label: 'Display mode'

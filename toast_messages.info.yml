@@ -1,0 +1,11 @@
+name: "Toast Messages"
+type: module
+description: "Custom fork of the izi_message module rebranded as toast_messages with HTML-safe Toast rendering and BigPipe compatibility."
+package: User interface
+core_version_requirement: ^9.3 || ^10 || ^11
+configure: toast_messages.settings
+
+# Maintained as a local override for this site.
+version: "1.0.0"
+project: "toast_messages"
+datestamp: 1715766240

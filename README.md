@@ -1,55 +1,63 @@
-CONTENTS OF THIS FILE
----------------------
+# Toast Messages
 
- * Introduction
- * Recommended modules
- * Installation
- * Configuration
- * Maintainers
+Toast Messages is a Drupal module that converts standard Drupal status messages into iziToast notifications. It keeps Drupal message semantics while rendering them as responsive toast popups for status, warning, and error messages.
 
+## Features
 
-INTRODUCTION
-------------
+- Renders Drupal messages as toast notifications.
+- Supports message position, timeout, transitions, themes, and close controls.
+- Uses the iziToast library for lightweight, responsive styling.
+- Works with Drupal render placeholders and BigPipe-compatible lazy rendering.
+- Keeps messages HTML-safe while preserving Drupal message content.
 
-Toast Messages is a custom fork that provides Drupal messages as clickable toast notifications.
-Elegant, responsive, flexible and light messaging module with library
-[izitoast.marcelodolza.com](http://izitoast.marcelodolza.com)
+## Requirements
 
+- Drupal core 9.3+, 10, or 11
+- The iziToast library available in the site libraries directory at /libraries/iziToast
 
-RECOMMENDED MODULES
--------------------
+The module declares the iziToast dependency in [toast_messages.libraries.yml](toast_messages.libraries.yml).
 
- * No extra module is required.
+## Installation
 
+1. Place the module in a Drupal custom module directory, such as web/modules/custom/toast_messages.
+2. Enable the module:
+   - Drupal UI: Extend > Toast Messages
+   - Or via Drush: `drush en toast_messages`
+3. Ensure the iziToast assets are installed under:
+   - /libraries/iziToast/dist/css/iziToast.css
+   - /libraries/iziToast/src/js/iziToast.js
 
-INSTALLATION
-------------
+## Configuration
 
- * Install as usual, see
-   https://www.drupal.org/docs/8/extending-drupal-8/installing-contributed-modules-find-import-enable-configure-drupal-8
-   for further information.
+After enabling the module, configure it at:
 
+- Administration > Configuration > Development > Toast messages settings
 
-CONFIGURATION
--------------
+The settings form includes options for:
 
-    1 Navigate to Administration > Configuration > Development >
-      Izi message settings for configurations. Save Configurations.
+- message timeout
+- toast position
+- light/dark theme
+- progress bar and pause-on-hover behavior
+- close button and close-on-click behavior
+- animation transitions
+- size options and maximum width
+- overlay and display mode
 
+Default configuration is stored in [config/install/izi_message.settings.yml](config/install/izi_message.settings.yml), and the schema is defined in [config/schema/toast_messages.schema.yml](config/schema/toast_messages.schema.yml).
 
+## How it works
 
-REQUIREMENTS
-------------
+The module hooks into Drupal's status messages system and replaces the standard message output with a toast-rendered placeholder. This happens through the pre-render pipeline in [toast_messages.module](toast_messages.module), using the lazy-builder callback in [src/ToastMessages.php](src/ToastMessages.php).
 
-This module requires no modules outside of Drupal core,
-but require next js library:
+In practice, any standard Drupal message that would normally appear in the page header can be converted to a toast notification without custom message rendering in each template.
 
- * [iziToast](http://izitoast.marcelodolza.com)
+## Notes
 
+- This module is a custom local fork/rebrand of the earlier izi_message approach.
+- It is designed for this site and maintained as a custom module rather than a generic contributed package.
+- The module route is defined in [toast_messages.routing.yml](toast_messages.routing.yml) and is available at /admin/config/development/toast_messages/settings.
 
-MAINTAINERS
------------
+## Maintainers
 
-Current maintainers:
-
- * UsingSession (https://www.drupal.org/u/usingsession)
+This module is maintained as a custom site module for this project and is not a published Drupal.org contrib release.

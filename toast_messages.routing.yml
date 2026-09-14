@@ -1,0 +1,7 @@
+toast_messages.settings:
+  path: '/admin/config/development/toast_messages/settings'
+  defaults:
+    _title: 'Toast messages settings'
+    _form:  '\Drupal\toast_messages\Form\ToastMessagesSettingsForm'
+  requirements:
+    _permission: 'administer site configuration'
