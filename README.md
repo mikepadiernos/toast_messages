@@ -44,7 +44,7 @@ The settings form includes options for:
 - size options and maximum width
 - overlay and display mode
 
-Default configuration is stored in [config/install/izi_message.settings.yml](config/install/izi_message.settings.yml), and the schema is defined in [config/schema/toast_messages.schema.yml](config/schema/toast_messages.schema.yml).
+Default configuration is stored in [config/install/toast_messages.settings.yml](config/install/toast_messages.settings.yml), and the schema is defined in [config/schema/toast_messages.schema.yml](config/schema/toast_messages.schema.yml).
 
 ## How it works
 
@@ -54,7 +54,7 @@ In practice, any standard Drupal message that would normally appear in the page 
 
 ## Notes
 
-- This module is a custom local fork/rebrand of the earlier izi_message approach.
+- This module is maintained as an independent custom module for this project.
 - It is designed for this site and maintained as a custom module rather than a generic contributed package.
 - The module route is defined in [toast_messages.routing.yml](toast_messages.routing.yml) and is available at /admin/config/development/toast_messages/settings.
 
