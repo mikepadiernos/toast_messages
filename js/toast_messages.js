@@ -7,6 +7,24 @@
 (function ($, Drupal) {
   "use strict";
 
+  function attachToastMessages(context, settings) {
+    Drupal.behaviors.toastMessages.attach(context, settings);
+  }
+
+  function maybeAttachToastMessages(node) {
+    if (!node || node.nodeType !== 1) {
+      return;
+    }
+
+    var hasMessageMarkup =
+      (node.matches && node.matches('div[data-izi-message], [data-drupal-messages], [data-drupal-messages] .messages')) ||
+      (node.querySelector && node.querySelector('div[data-izi-message], [data-drupal-messages] .messages'));
+
+    if (hasMessageMarkup) {
+      attachToastMessages(node, window.drupalSettings || {});
+    }
+  }
+
   function getToastMethod(type) {
     if (typeof iziToast === 'undefined') {
       return null;
@@ -144,4 +162,28 @@
       }, 100);
     }
   };
+
+  // Some admin pages can render messages before this behavior is registered.
+  // Run one explicit pass at DOM ready; processed markers prevent duplicates.
+  $(function () {
+    attachToastMessages(document, window.drupalSettings || {});
+
+    if (!window.MutationObserver || window.__toastMessagesObserverInitialized) {
+      return;
+    }
+
+    window.__toastMessagesObserverInitialized = true;
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        mutation.addedNodes.forEach(function (node) {
+          maybeAttachToastMessages(node);
+        });
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
 })(jQuery, Drupal);
